@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "dotenv": "^16.1.4",
     "gh-pages": "^5.0.0",
     "requests": "^0.3.0"
   },
@@ -10,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "install": "npm install",
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "build": "npm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
