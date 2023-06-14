@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "gh-pages": "^5.0.0",
+    "requests": "^0.3.0"
+  },
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "weather API",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm install",
+    "start": "node index.js",
+    "build": "babel index.js -o dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Utkarsh Gupta",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.22.5",
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "webpack": "^5.86.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

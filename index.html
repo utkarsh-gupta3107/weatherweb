@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />    
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Quicksand:wght@300&family=Raleway:wght@200&display=swap" rel="stylesheet">
+    <title>Weather</title>
+    <style>
+        
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;}
+.box{
+    background-color: rgb(0, 195, 255);
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 50vh;
+    margin: 100px auto;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+    box-shadow:0 4px 165px 0 rgba(0, 0, 0, 0.3), 0 6px 28px 0 rgba(0, 0, 0, 0.19);
+    }
+    @media(max-width:500px){
+        .box{
+            width: 40vh;
+        }
+
+    }
+.wave{
+    position:absolute;
+    width: 900px;
+    height: 900px;
+    background-color: rgba(18, 138, 186, 0.329);
+    border-radius: 50%;
+    animation-timing-function: ease;
+    top: 50%;
+    overflow: hidden;
+}    
+.one{
+    /* top: 50%; */
+    animation: round 10s infinite 1s ease;
+}
+.two{
+    /* top: 51%; */
+    animation: round 10s infinite ease ;
+    animation-delay: -1.5s;
+    }
+.three{
+    /* top: 52%; */
+    animation: round 10s infinite 2s ease;
+
+}    
+@keyframes round{
+    0%{
+        transform:translateX(0px);
+    }
+    25%{
+        transform:translateX(100px);
+    }
+    75%{
+        transform:translateX(-600px);
+    }
+    100%{
+        transform:translateX(0px);
+    }
+}
+.info{
+    background-color: rgb(115, 226, 185);
+    position: relative;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: 235px;
+    padding-top: 20px ;
+    padding-bottom: 20px ;
+    z-index: 2;
+}
+#weathercon{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 100px;
+    overflow: initial;
+}
+.fa-sun,.fa-cloud, .fa-cloud-rain{
+    animation: scale 3s infinite ease;
+}
+@keyframes scale {
+    0%{
+        transform: scale(2.3);
+    }
+    50%{
+        transform: scale(3.9);
+    }
+    100%{
+        transform: scale(2.3);
+    }
+}
+.fa-street-view{
+animation: tranx 2s infinite ease;
+}
+@keyframes tranx {
+    50%{
+        transform: translateX(-3px);
+    }
+}
+    </style>
+</head>
+
+<body style="background: #fdfd7c;">
+    <div class="box">
+        <div class="wave one"></div>
+        <div class="wave two"></div>
+        <div class="wave three"></div>
+        <div id="weathercon">
+            <!--why fa-solid is not working but fas is?  -->
+            <!-- <i class="fas fa-sun" style="color: rgb(238, 144, 68);"></i> -->
+        </div>
+              <div class="info">
+                <!-- {%tempval%} is a placeholder -->
+            <h2 class="location"><i class="fas fa-street-view"></i>{%location%},{%country%}</h2>
+            <p id="curDate"></p>
+            <h1 class="temp">{%value%}&deg;C</h1>
+            <h3 class="tempmin_max">Min {%tempmin%}&deg;C | Max {%tempmax%}&deg;C</h3>
+        </div>
+    </div>
+    <script>
+       const curDate=document.getElementById("date");
+       let WeatherCon=document.getElementById("weathercon");
+       const status= "{%status%}";
+       console.log(status);
+    //    status="cloudy";
+       if(status=="Clear"){
+        WeatherCon.innerHTML= 
+            "<i class='fas fa-sun' style='color: rgb(238, 144, 68);''></i>"
+       }
+       else if(status=="Clouds"){
+        WeatherCon.innerHTML= 
+       " <i class='fas fa-cloud' style='color:white;'></i>"   
+     }
+       else if(status=="Rainy"){
+        weathercon.innerHTML= 
+        "<i class='fas fa-cloud-rain' style='color: white;'></i>"
+       }
+       else{
+        WeatherCon.innerHTML= 
+        " <i class='fas fa-sun' style='color: rgb(238, 144, 68);'></i>"
+       }
+       const getCurrentDay = () => {
+        var weekday= new Array(7);
+        weekday[0]="Sunday";
+        weekday[1]="Monday";
+        weekday[2]="Tuesday";
+        weekday[3]="Wednesday";
+        weekday[4]="Thursday";
+        weekday[5]="Friday";
+        weekday[6]="Saturday";
+
+        let currentTime=new Date();
+       var ok= weekday[currentTime.getDay()];
+       return ok;
+       }
+    const getCurrentTime = ()=>{
+        var month= new Array(12);
+        month[0]="Jan";
+        month[1]="Feb";
+        month[2]="Mar";
+        month[3]="Apr";
+        month[4]="May";
+        month[5]="June";
+        month[6]="July";
+        month[7]="Aug";
+        month[8]="Sept";
+        month[9]="Octo";
+        month[10]="Nov";
+        month[11]="Dec";
+        let currentTime=new Date();
+        let hour= currentTime.getHours();
+        let min= currentTime.getMinutes();
+        if(min<10){
+            min = "0"+ min
+        }
+        if (hour>11){
+            if(hour>12){
+                hour=hour-12;
+            }
+            var see= "P.M"
+        }
+        else{
+            see= "A.M"
+        }
+      var here =`${month[currentTime.getMonth()]} ${currentTime.getDate()} | ${hour}:${min} ${see}`;
+        // var here= month[currentTime.getMonth()]+currentTime.getDate()+" | "+hour+":"+min+see;
+return here;
+        
+    }  
+   
+    document.getElementById('curDate').innerHTML= getCurrentDay() +" | "+ getCurrentTime();
+   
+   </script>
+   <script src="index.js"></script>
+</body>
+
+</html>

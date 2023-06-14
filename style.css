@@ -1,0 +1,95 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;}
+.box{
+    background-color: rgb(0, 195, 255);
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 25%;
+    margin: 100px auto;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+    }
+.wave{
+    position:absolute;
+    width: 900px;
+    height: 900px;
+    background-color: rgba(18, 138, 186, 0.329);
+    border-radius: 50%;
+    animation-timing-function: ease;
+    top: 50%;
+    overflow: hidden;
+}    
+.one{
+    /* top: 50%; */
+    animation: round 10s infinite 1s ease;
+}
+.two{
+    /* top: 51%; */
+    animation: round 10s infinite ease ;
+    }
+.three{
+    /* top: 52%; */
+    animation: round 10s infinite 2s ease;
+
+}    
+@keyframes round{
+    0%{
+        transform:translateX(0px);
+    }
+    25%{
+        transform:translateX(100px);
+    }
+    75%{
+        transform:translateX(-600px);
+    }
+    100%{
+        transform:translateX(0px);
+    }
+}
+.info{
+    background-color: rgb(115, 226, 185);
+    position: relative;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: 235px;
+    padding-top: 20px ;
+    padding-bottom: 20px ;
+    z-index: 2;
+}
+#weathercon{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 100px;
+    overflow: initial;
+}
+.fa-sun{
+    animation: scale 3s infinite ease;
+}
+@keyframes scale {
+    0%{
+        transform: scale(2.3);
+    }
+    50%{
+        transform: scale(3.9);
+    }
+    100%{
+        transform: scale(2.3);
+    }
+}
+.fa-street-view{
+animation: tranx 2s infinite ease;
+}
+@keyframes tranx {
+    50%{
+        transform: translateX(-3px);
+    }
+}
