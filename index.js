@@ -1,4 +1,4 @@
-require('dotenv').config();
+const dotenv= require('dotenv').config();
 const http = require("http");
 const fs = require("fs");
 const requests = require("requests");
