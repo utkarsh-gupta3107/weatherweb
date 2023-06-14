@@ -1,4 +1,3 @@
-const dotenv= require('dotenv').config();
 const http = require("http");
 const fs = require("fs");
 const requests = require("requests");
@@ -23,7 +22,7 @@ const server = http.createServer((req, res) => {
     if (req.url = "/")
     // npm routing
     {
-        requests(process.env.LINK)
+        requests('https://api.openweathermap.org/data/2.5/weather?q=bhadrak&appid=50f8392da4bf71cca6b3065ba95d7d22')
             // and events module "data"
             // chunk kajyada kaam nhi hai because we re not streaming
             .on('data', (chunk) => {
