@@ -11,7 +11,7 @@
   "scripts": {
     "install": "npm install",
     "start": "node index.js",
-    "build": "babel index.js -o dist/index.js",
+    "build": "npm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Utkarsh Gupta",
